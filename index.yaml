@@ -1,0 +1,13 @@
+default:
+    name: mesos
+    version: '0.28.2'
+    summary: A distributed systems kernel
+    buildprefix: /usr
+    release: 1.ubuntu14.04
+    http: http://www.apache.org/dyn/closer.cgi/mesos/0.28.2/mesos-0.28.2.tar.gz
+rpm:
+    arch: noarch
+    requires:
+        - cyrus-sasl-md5
+deb:
+    arch: all
