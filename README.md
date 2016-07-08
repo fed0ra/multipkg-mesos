@@ -52,6 +52,13 @@ $ rm -rf mesos-0.28.2.tar.gz
 $ cd ..
 ```
 ### Build Mesos
+Add executable permissions to build script
+
+```
+$ chmod +x scripts/build
+```
+
+and then run:
 
 ```
 $ multipkg -t . -v
