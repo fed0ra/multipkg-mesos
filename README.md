@@ -2,38 +2,56 @@
 
 Multipkg automates and versions your package builds.
 
-Use multipkg packaged mesos.
-
-## Installation
+### Installation
 
 Multipkg is best installed via rpms/debs built by... Multipkg.
 
-The first step, clone multipkg via git:
+1.Install your developer tools
 
 ```
-$ git clone git@github.com:ytoolshed/multipkg.git
+$ yum -y groupinstall "Development Tools"
 ```
 
-Then install `YAML::Syck` and `makemaker`:
-
+2.install YAML::Syck and makemaker  
+centos:  
 ```
-# CentOS/Fedora/RHEL
 $ yum install -y perl-YAML-Syck perl-ExtUtils-MakeMaker
-
-# Ubuntu/Debian
+```  
+ubuntu:  
+```
 $ apt-get install -y libyaml-syck-perl
 ```
 
-cd multipkg, manually build and install your first multipkg package:
+3.clone multipkg via git
 
 ```
-PREFIX=./root PKGVERID=0 INSTALLDIR=source scripts/transform
-perl -I ./source/lib root/usr/bin/multipkg -t .
+$ git clone git@github.com:ytoolshed/multipkg.git  
+$ cd multipkg/
 ```
 
-## Build Mesos
+4.manually build and install your first multipkg package
 
-If you already have mesos source code, extract to `~/mesos/source`, then run:
+```
+$ PREFIX=./root PKGVERID=0 INSTALLDIR=source scripts/transform  
+$ perl -I ./source/lib root/usr/bin/multipkg -t .  
+$ yum -y install multipkg-*rpm  
+$ multipkg --help
+```
+# Mesos
+### Get mesos source code
+Get mesos source code, extract to `~/mesos/source`
+
+```
+$ git clone https://github.com/fed0ra/multipkg-mesos.git  
+$ cd multipkg-mesos/  
+$ mkdir source  
+$ cd source  
+$ wget http://mirror.bit.edu.cn/apache/mesos/0.28.2/mesos-0.28.2.tar.gz  
+$ tar -zxf mesos-0.28.2.tar.gz --strip-component=1  
+$ rm -rf mesos-0.28.2.tar.gz  
+$ cd ..
+```
+### Build Mesos
 
 ```
 $ multipkg -t . -v
